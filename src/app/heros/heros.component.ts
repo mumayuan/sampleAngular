@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Hero } from '../hero';
-import {HEROES } from '../mock-heros';
+import {HeroService } from '../hero.service';
+//import {HEROES } from '../mock-heros';
 
 @Component({
   selector: 'app-heros',
@@ -12,7 +13,7 @@ export class HerosComponent implements OnInit {
 	id : 1,  
 	name: 'flash'
 } ;
-  heroes = HEROES;
+  heroes : Hero[];
 
   constructor() { }
 
