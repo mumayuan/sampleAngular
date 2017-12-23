@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Hero } from './hero';
 import { HEROES } from './mock-heros';
 import { MessageService } from './message.service';
-
+import { of } from 'rxjs/observable/of';
 @Injectable()
 export class HeroService {
 
@@ -12,7 +12,7 @@ export class HeroService {
   }
 */
 getHeroes(): Observable<Hero[]> {
-  // Todo: send the message _after_ fetching the heroes
+  console.log("getHeroes");
   this.messageService.add('HeroService: fetched heroes');
   return of(HEROES);
 }
