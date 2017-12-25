@@ -1,0 +1,10 @@
+<h3>Top Heroes {{heroes.length}} </h3>
+
+<p *ngIf="heroes.length > 1">There are many heroes!</p>
+<div class="grid grid-pad">
+  <a *ngFor="let hero of heroes" class="col-1-4"    routerLink="/detail/{{hero.id}}" >
+    <div class="module hero">
+      <h4>{{hero.name}}</h4>
+    </div>
+  </a>
+</div>

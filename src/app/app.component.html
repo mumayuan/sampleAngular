@@ -3,7 +3,10 @@
   <h1>
     Funny {{ title }}!
   </h1>
-
+  <nav>
+    <a routerLink="/dashboard">Dashboard</a>
+    <a routerLink="/heros">Heroes</a>
+  </nav>
 </div>
-  <app-heros></app-heros>
+  <router-outlet></router-outlet>
   <app-messages></app-messages>

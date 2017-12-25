@@ -1,12 +1,12 @@
 <div *ngIf="hero">
 
-  <h2>{{ hero.name | uppercase }} My Details</h2>
+  <h2>{{ hero.name | uppercase }} My Details {{counter}}</h2>
   <div (click)="fireMyEvent()"><span>id: </span>{{hero.id}}</div>
   <div>
     <label>name:
       <input [(ngModel)]="hero.name" placeholder="name"/>
     </label>
   </div>
-
+  <button (click)="goBack()">go back</button>
   <button (click)="fireMyEvent()">ok</button>
 </div>
