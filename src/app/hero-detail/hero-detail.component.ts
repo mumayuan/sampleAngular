@@ -3,6 +3,7 @@ import { Hero } from '../hero';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { HeroService }  from '../hero.service';
+import { Chart } from 'angular-highcharts';
 
 
 @Component({
@@ -12,6 +13,22 @@ import { HeroService }  from '../hero.service';
 })
 
 export class HeroDetailComponent implements OnInit {
+  chart = new Chart({
+        chart: {
+          type: 'line'
+        },
+        title: {
+          text: 'Linechart'
+        },
+        credits: {
+          enabled: false
+        },
+        series: [{
+          name: 'Line 1',
+          data: [1, 2, 3]
+        }]
+      });
+
 
   hero: Hero;
   counter: Number;
@@ -24,12 +41,17 @@ export class HeroDetailComponent implements OnInit {
   ) {
     this.counter = 100;
 	  console.log(`consturctor ${this.counter}`);
+
   }
 
 
   ngOnInit() {
 	  console.log("on init ng");
 	  this.getHero();
+   this.chart.removeSerie(0);
+  this.chart.addSerie(
+    {name: 'Line 2', data : [30, 40, 50]}
+  );
   }
 
   getHero(): void {
@@ -42,7 +64,13 @@ export class HeroDetailComponent implements OnInit {
     this.location.back();
   }
 
+  save(): void {
+     this.heroService.updateHero(this.hero)
+       .subscribe(() => this.goBack());
+   }
+
   fireMyEvent(evt){
+ this.chart.addPoint(Math.floor(Math.random() * 10));
 	console.log("firing event "+this.hero.name);
   }
 }

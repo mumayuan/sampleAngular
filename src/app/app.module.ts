@@ -12,7 +12,8 @@ import { MessagesComponent } from './messages/messages.component';
 import { MessageService } from './message.service';
 import { AppRoutingModule } from './/app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
-
+import { HeroSearchComponent } from './hero-search/hero-search.component';
+import { ChartModule } from 'angular-highcharts';
 
 @NgModule({
   declarations: [
@@ -20,16 +21,18 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     HerosComponent,
     HeroDetailComponent,
     MessagesComponent,
-    DashboardComponent
+    DashboardComponent,
+    HeroSearchComponent
   ],
 
   imports: [
-    BrowserModule, HttpClientInMemoryWebApiModule.forRoot(
+    BrowserModule,
+    /*HttpClientInMemoryWebApiModule.forRoot(
                      InMemoryDataService, { dataEncapsulation: false }
-                   ),
-    FormsModule, AppRoutingModule, HttpClientModule
+                   ),*/
+    FormsModule, AppRoutingModule, HttpClientModule, ChartModule
   ],
-  providers: [HeroService, MessageService],
+  providers: [HeroService, MessageService, InMemoryDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

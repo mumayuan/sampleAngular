@@ -1,12 +1,15 @@
 <div *ngIf="hero">
 
   <h2>{{ hero.name | uppercase }} My Details {{counter}}</h2>
+  <div style="border: 1px solid red"[chart]="chart"></div>
   <div (click)="fireMyEvent()"><span>id: </span>{{hero.id}}</div>
-  <div>
-    <label>name:
+  <div class="jumbotron">
+    <label >name:
       <input [(ngModel)]="hero.name" placeholder="name"/>
     </label>
   </div>
-  <button (click)="goBack()">go back</button>
-  <button (click)="fireMyEvent()">ok</button>
+  <span class="badge badge-primary">Primary</span>
+  <button class="btn btn-primary" (click)="goBack()">go e step back</button>
+  <button  (click)="fireMyEvent()">ok</button>
+  <button class="btn btn-info" (click)="save()">save</button>
 </div>
