@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Hero } from './hero';
+import { HeroDetail } from './herodetail';
+
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MessageService } from './message.service';
 import { of } from 'rxjs/observable/of';
@@ -27,14 +29,15 @@ private heroesUrl = 'http://127.0.0.1:8999/api/myheroes';  // URL to web api
      );
    }
 
-getHero(id: number): Observable<Hero> {
+getHero(id: number): Observable<HeroDetail> {
   const url = `${this.heroesUrl}/${id}`;
-  return this.http.get<Hero>(url).pipe(
+  return this.http.get<HeroDetail>(url).pipe(
     tap(_ => this.log(`fetched hero id=${id}`)),
-    catchError(this.handleError<Hero>(`getHero id=${id}`))
+    catchError(this.handleError<HeroDetail>(`getHero id=${id}`))
   );
 }
 updateHero (hero: Hero): Observable<any> {
+ console.log(`->saving  hero: ${hero.id} + ${hero.name}`+ hero);
   return this.http.put(this.heroesUrl, hero, httpOptions).pipe(
     tap(_ => this.log(`updated hero id=${hero.id}`)),
     catchError(this.handleError<any>('updateHero'))
@@ -76,7 +79,7 @@ private handleError<T> (operation = 'operation', result?: T) {
   return (error: any): Observable<T> => {
 
     // TODO: send the error to remote logging infrastructure
-    console.error(error); // log to console instead
+    console.error("HEROSERVICE.TS ............... "+ JSON.stringify(error)); // log to console instead
 
     // TODO: better job of transforming error for user consumption
     this.log(`${operation} failed: ${error.message}`);
