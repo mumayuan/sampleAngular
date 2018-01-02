@@ -10,10 +10,14 @@ import { HerosComponent } from './heros/heros.component';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { MessagesComponent } from './messages/messages.component';
 import { MessageService } from './message.service';
-import { AppRoutingModule } from './/app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeroSearchComponent } from './hero-search/hero-search.component';
 import { ChartModule } from 'angular-highcharts';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material';
+import { MyDialogComponent } from './my-dialog/my-dialog.component';
+
 
 @NgModule({
   declarations: [
@@ -22,17 +26,18 @@ import { ChartModule } from 'angular-highcharts';
     HeroDetailComponent,
     MessagesComponent,
     DashboardComponent,
-    HeroSearchComponent
+    HeroSearchComponent,
+    MyDialogComponent
   ],
 
   imports: [
-    BrowserModule,
-    /*HttpClientInMemoryWebApiModule.forRoot(
-                     InMemoryDataService, { dataEncapsulation: false }
-                   ),*/
-    FormsModule, AppRoutingModule, HttpClientModule, ChartModule
+    BrowserModule,BrowserAnimationsModule
+    ,FormsModule, AppRoutingModule, HttpClientModule, ChartModule
+    ,MatDialogModule
+
   ],
   providers: [HeroService, MessageService, InMemoryDataService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [MyDialogComponent]
 })
 export class AppModule { }
